@@ -7,10 +7,8 @@ matrix:
       dist: trusty
     - os: osx 
       osx_image: xcode8
-      brew_packages: tbb zlib boost
     - os: osx
       osx_image: xcode7.2
-      brew_packages: tbb zlib boost
 
 #install:
 #- if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
@@ -32,6 +30,9 @@ addons:
 notifications:
   email: false
 
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install tbb zlib boost ; fi
 script:
  - export LD_LIBRARY_PATH=$HOME/lib
  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
