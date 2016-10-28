@@ -41,5 +41,5 @@ script:
  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make check; fi
  #For some reason, make check on OS X + conda fails to respect LD_LIBRARY_PATH,
  #so we'll run the tests manually
- - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd test; for i in $(find testsuite -type f -perm +111);do $i -r detailed;cd .. ;done; fi
+ - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd test; for i in $(find . -type f -perm +111);do $i -r detailed;cd .. ;done; fi
  - $HOME/bin/libsequenceConfig --version
