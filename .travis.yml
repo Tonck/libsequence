@@ -25,9 +25,12 @@ addons:
     - libboost-system-dev
     - libboost-test-dev
     - libtbb-dev
+  brew:
+    packages:
+    - tbb
+    - zlib
+    - boost
 
-before_install:
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; brew outdated tbb || brew upgrade tbb; fi
 notifications:
   email: false
 
